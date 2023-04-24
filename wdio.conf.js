@@ -135,21 +135,19 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [
-        [
-        'spec',
-        {
-          symbols: {
+        [ 'spec', {
+            symbols: {
             passed: '[PASS]',
             failed: '[FAIL]',
             skipped: '[SKIP]',
           },
-        },
-      ], 
-      [
-        'junit', {
+        }], 
+        [ 'junit', {
             outputDir: './reporter',
+            outputFileFormat: function() { // optional
+                return `results-${new Date().toUTCString()}.xml`
             },
-        ]
+        }]
     ],
 
     //
